@@ -1,0 +1,28 @@
+--create a clothing store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, color TEXT, price INTEGER, popularity INTEGER);
+
+INSERT into store VALUES (1, "T-shirt", "red", 20.99, 41);
+INSERT into store VALUES (2, "Long sleeve shirt", "blue", 34.95, 35);
+INSERT into store VALUES (3, "Jeans", "green", 28.25, 10);
+INSERT into store VALUES (4, "Jean shorts", "purple", 59.99, 38);
+INSERT into store VALUES (5, "Basketball shorts", "orange", 40.45, 50);
+INSERT into store VALUES (6, "Sweatshirt", "black", 79.95, 90);
+INSERT into store VALUES (7, "Running shoes", "black", 45.95, 56);
+INSERT into store VALUES (8, "Basketball shoes", "blue", 69.99, 75);
+INSERT into store VALUES (9, "Tank top", "purple", 19.99, 25);
+INSERT into store VALUES (10, "Socks", "red", 16.95, 17);
+INSERT into store VALUES (11, "Dress", "purple", 99.99, 16);
+INSERT into store VALUES (12, "Flip flops", "black", 24.99, 20);
+INSERT into store VALUES (13, "Hat", "orange", 19.99, 12);
+INSERT into store VALUES (14, "Sumbrero", "green", 24.95, 14);
+INSERT into store VALUES (15, "Swimming shorts", "red", 14.95, 22);
+
+--display the database ordered by price
+SELECT * FROM store ORDER BY price desc;
+
+--what is the avg price of the items in red color?
+SELECT AVG(price) "avg red colored item price" FROM store WHERE color ='red';
+
+--what are the 5 most popular items?
+SELECT item, price, popularity FROM store ORDER BY popularity desc LIMIT 5;

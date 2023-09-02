@@ -64,7 +64,7 @@ FROM "netflix_people" people
 LEFT JOIN "netflix_titles_info" titles
 ON people.show_id = titles.show_id;
 
-/* How many movie titles are in the data base? /
+/* How many movie titles are in the data base? */
 
 SELECT COUNT(*) FROM "netflix_titles_info" WHERE "type"='Movie';
 

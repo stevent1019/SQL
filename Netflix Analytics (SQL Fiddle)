@@ -56,6 +56,7 @@ VALUES
     ('s20', NULL, 'Blanca SuÃ¡rez| IvÃ¡n Marcos| Ã“scar Casas| AdriÃ¡n Lastra| Francesc Garrido| Stefan Weinert| Julia MÃ¶ller| Alicia Chojnowski')
     ;
 
+/* How many movie titles are there in the database? (movies only, not tv shows) */
 SELECT people.show_id
 ,people.director
 ,titles.title
@@ -65,22 +66,18 @@ LEFT JOIN "netflix_titles_info" titles
 ON people.show_id = titles.show_id;
 
 /* How many movie titles are in the data base? */
-
 SELECT COUNT(*) FROM "netflix_titles_info" WHERE "type"='Movie';
 
 /* When was the most recent batch of tv shows and/or movies added to the database? */
-
 SELECT MAX(date(date_added))
 FROM "netflix_titles_info";
 
 /* List all the movies and tv shows in alphabetical order */
-
 SELECT title
 FROM "netflix_titles_info"
 ORDER BY title asc;
 
 /* Who was the Director the for move The Starling? */
-
 SELECT
 director
 FROM "netflix_titles_info" titles
@@ -89,7 +86,6 @@ ON titles.show_id=people.show_id
 WHERE titles.title='The Starling';
 
 /* What is the oldest movie in the database and what year was it made? */
-
 SELECT title, release_year
 FROM "netflix_titles_info"
 WHERE type='Movie'

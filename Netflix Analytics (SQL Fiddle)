@@ -55,3 +55,20 @@ VALUES
     ('s19', 'Adam Salky', 'Freida Pinto| Logan Marshall-Green| Robert John Burke| Megan Elisabeth Kelly| Sarah Minnich| Hayes Hargrove| Mark Sivertsen| Brandon Fierro| Antonio Valles| Clint Obenchain'),
     ('s20', NULL, 'Blanca SuÃ¡rez| IvÃ¡n Marcos| Ã“scar Casas| AdriÃ¡n Lastra| Francesc Garrido| Stefan Weinert| Julia MÃ¶ller| Alicia Chojnowski')
     ;
+
+SELECT people.show_id
+,people.director
+,titles.title
+,titles.type
+FROM "netflix_people" people
+LEFT JOIN "netflix_titles_info" titles
+ON people.show_id = titles.show_id;
+
+/* How many movie titles are in the data base? /
+
+SELECT COUNT(*) FROM "netflix_titles_info" WHERE "type"='Movie';
+
+/* When was the most recent batch of tv shows and/or movies added to the database? */
+
+SELECT MAX(date(date_added))
+FROM "netflix_titles_info";

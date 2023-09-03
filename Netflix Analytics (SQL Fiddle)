@@ -56,14 +56,6 @@ VALUES
     ('s20', NULL, 'Blanca SuÃ¡rez| IvÃ¡n Marcos| Ã“scar Casas| AdriÃ¡n Lastra| Francesc Garrido| Stefan Weinert| Julia MÃ¶ller| Alicia Chojnowski')
     ;
 
-/* How many movie titles are there in the database? (movies only, not tv shows) */
-SELECT people.show_id
-,people.director
-,titles.title
-,titles.type
-FROM "netflix_people" people
-LEFT JOIN "netflix_titles_info" titles
-ON people.show_id = titles.show_id;
 
 /* How many movie titles are in the data base? */
 SELECT COUNT(*) FROM "netflix_titles_info" WHERE "type"='Movie';

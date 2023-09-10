@@ -1,0 +1,91 @@
+# Here is all of the Khan Academy Challenges that I completed
+
+#1 Book list database
+
+CREATE TABLE books (id INTEGER PRIMARY KEY, name TEXT, author TEXT, pages INTEGER, rating INTEGER);
+
+INSERT INTO books VALUES (1, "The Secret", "Rhonda Byrne", 198, 1);
+INSERT INTO books VALUES (2, "The Secret", "Rhonda Byrne", 198, 1);
+INSERT INTO books VALUES (3, "The Secret", "Rhonda Byrne", 198, 1);
+
+#2 Box office hits database
+
+SELECT * FROM movies;
+SELECT * FROM movies WHERE "release_year">=2000
+ORDER BY "release_year" asc
+
+#3 TODO list database stats
+
+SELECT sum(minutes) FROM todo_list
+
+#4 Karaoke song selector
+
+SELECT title FROM songs;
+SELECT title FROM songs WHERE mood='epic';
+SELECT title FROM songs WHERE mood='epic' AND released>1990 AND duration<240
+
+#5 Playlist maker
+
+SELECT title FROM songs WHERE artist = "Queen";
+SELECT name FROM artists WHERE genre = "Pop";
+SELECT title FROM songs WHERE artist IN
+(SELECT name FROM artists WHERE genre='Pop')
+
+#6 The wordiest author
+
+SELECT author, sum(words) as total_words FROM books GROUP BY author HAVING total_words>1000000;
+SELECT author, avg(words) as avg_words FROM books GROUP BY author HAVING avg_words>150000
+
+#7 Gradebook
+
+SELECT name, number_grade, ROUND(fraction_completed*100) as percent_completed FROM student_grades;
+
+SELECT COUNT (*),
+  CASE 
+  WHEN number_grade > 90 THEN "A"
+  WHEN number_grade > 80 THEN "B"
+  WHEN number_grade > 70 THEN "C"
+  ELSE "F"
+  END as "letter_grade" FROM student_grades
+  GROUP BY "letter_grade";
+
+#8 Bobby's Hobbies
+
+SELECT persons.name, hobbies.name
+FROM hobbies
+JOIN persons
+ON hobbies.person_id = persons.id;
+
+SELECT persons.name, hobbies.name
+FROM hobbies
+JOIN persons
+ON hobbies.person_id = persons.id
+WHERE persons.name='Bobby McBobbyFace'
+
+#9 Customer's orders
+
+SELECT customers.name, customers.email, orders.item, orders.price
+    FROM customers
+    LEFT OUTER JOIN orders
+    ON customers.id=orders.customer_id
+
+#10 Sequels in SQL
+
+SELECT movies.title, sequels.title
+FROM movies
+LEFT OUTER JOIN movies sequels
+ON movies.sequel_id = sequels.id;
+
+#11 FriendBook
+
+SELECT p.fullname, h.name
+FROM persons p
+JOIN hobbies h
+ON p.id=h.person_id;
+
+SELECT a.fullname, b.fullname
+FROM friends
+JOIN persons a
+ON a.id = friends.person1_id
+JOIN persons b
+ON b.id = friends.person2_id;
